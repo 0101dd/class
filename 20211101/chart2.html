@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="chart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+  <script>
+    const canvas = document.getElementById('chart')
+
+    axios.get('./data.json')
+      .then(({ data }) => {
+        const record = data[0].result.records[0]
+        const months = Object.keys(record).filter(key => {
+          return key.includes('月')
+        })
+        const d = []
+        for (const month of months) {
+          d.push(record[month].replace(/,/g, '').replace(/\s/g, ''))
+        }
+        new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels: months,
+            datasets: [
+              {
+                label: record.場館,
+                data: d
+              }
+            ]
+          }
+        })
+      })
+  </script>
+</body>
+</html>

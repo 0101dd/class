@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 建立一個 XHR
+    const xhr = new XMLHttpRequest()
+    // 設定請求方式及網址
+    xhr.open('get', 'https://jsonplaceholder.typicode.com/posts')
+    // 當請求成功時
+    xhr.onload = () => {
+      // xhr.responseText 是文字
+      const json = JSON.parse(xhr.responseText)
+      console.log(json)
+    }
+    // 當請求錯誤時
+    xhr.onerror = error => {
+      console.log(error)
+    }
+    // 送出
+    xhr.send()
+
+    //*******************************************************************//
+    
+    const xhr2 = new XMLHttpRequest()
+    xhr2.open('post', 'https://jsonplaceholder.typicode.com/posts')
+    // 設定傳出的資料格式
+    xhr2.setRequestHeader('Content-Type', 'application/json')
+    xhr2.onload = () => {
+      // xhr.responseText 是文字
+      const json = JSON.parse(xhr2.responseText)
+      console.log(json)
+    }
+    xhr2.onerror = error => {
+      console.log(error)
+    }
+    // 送出
+    xhr2.send(JSON.stringify({
+      title: 'Hello',
+      body: '我信賴普拿疼'
+    }))
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
+</head>
+<body>
+  <table id="table">
+    <thead>
+      <tr>
+        <th>名稱</th>
+        <th>地址</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+  <script>
+    $.get('./data2.json', function(response) {
+      for (const restaurant of response.restaurants) {
+        $('#table tbody').append(
+          `<tr>
+            <td>${restaurant.title}</td>
+            <td>${restaurant.address}</td>
+          </tr>`
+        )
+      }
+      $('#table').DataTable({
+        // 翻譯
+        // https://datatables.net/plug-ins/i18n/
+        language: {
+          url: './zh_Hant.json'
+        },
+        // 欄位預設值
+        columnDefs: [
+          {
+            // 目標欄位，從 0 開始，可以放多個
+            targets: [1],
+            // 關閉排序
+            orderable: false,
+            // 關閉搜尋
+            searchable: false
+          }
+        ],
+        // 一頁幾筆設定
+        lengthMenu: [
+          // 數值，-1 是全部
+          [5, 10, 20, -1],
+          // 文字
+          [5, 10, 20, '全部']
+        ]
+      })
+    }, 'json')
+  </script>
+</body>
+</html>

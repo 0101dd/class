@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      // 處理回來的資料
+      // .json() .text() .blob()
+      .then(response => {
+        return response.json()
+      })
+      // 拿到 JSON 後
+      .then(json => {
+        console.log(json)
+      })
+      // 失敗時直接跳到這裡
+      .catch(error => {
+        console.log(error)
+      })
+      // 不一定要加，不管成功或失敗都會執行
+      .finally(() => {
+        console.log('完成')
+      })
+
+    //*******************************************************************//
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: '我站在雲林',
+        body: '我站在雲林👇😑👆打魚👆😑👇頭在暈👇😑👆我擁有超能力👆😑👇用冷水加飯菜👆😑👇'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      // 處理回來的資料
+      // .json() .text() .blob()
+      .then(response => {
+        return response.json()
+      })
+      // 拿到 JSON 後
+      .then(json => {
+        console.log(json)
+      })
+      // 失敗時直接跳到這裡
+      .catch(error => {
+        console.log(error)
+      })
+      // 不一定要加，不管成功或失敗都會執行
+      .finally(() => {
+        console.log('完成')
+      })
+  </script>
+</body>
+</html>
