@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const wait = time => {
+      return new Promise((resolve, reject) => {
+        // 如果不是傳入數字
+        if (isNaN(time)) {
+          reject(new Error('不是數字'))
+        }
+        // 等待指定的時間到才 resolve
+        setTimeout(() => {
+          resolve(`過了 ${time / 1000} 秒`)
+        }, time)
+      })
+    }
+
+    // async function asyncFunc () {
+    // }
+    const asyncFunc = async () => {
+      try {
+        // 1. 使用 await 時 function 必須是 async
+        // 2. await 後面只能放 Promise
+        // 3. await promise 回傳 resolve 的結果
+        // 4. await promise 錯誤時，會直接跳到 try catch 的 catch
+        const msg1 = await wait(3000)
+        console.log(`msg1 ${msg1}`)
+        const msg2 = await wait(3000)
+        console.log(`msg2 ${msg2}`)
+        const msg3 = await wait('abc')
+        console.log(`msg3 ${msg3}`)
+        console.log('finish')
+        return 'finish'
+      } catch (error) {
+        console.log('error')
+        console.log(error)
+        return Promise.reject(error)
+      }
+    }
+
+    // async function 也是 Promise
+    // .then() 可以接 return 出來的值
+    // .catch() 可以接 Promise.reject 的值
+    asyncFunc().then(result => {
+      console.log('asyncFunc then')
+      console.log(result)
+    }).catch(error => {
+      console.log('asyncFunc error')
+      console.log(error)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // try {
+    //   alertt(123)
+    // } catch (error) {
+    //   if (error.name === 'ReferenceError') {
+    //     console.log('變數未定義')
+    //   } else {
+    //     console.log('未知錯誤')
+    //   }
+    // }
+
+    // document.write('123')
+
+    const validate = (input) => {
+      try {
+        if (input.length === 0) throw new Error('不能為空白')
+        if (input.length > 8) throw new Error('太長')
+        if (!input.includes('wda')) throw new Error('格式錯誤')
+        alert('驗證成功')
+      } catch (error) {
+        console.log(error)
+        alert(error.message)
+      }
+    }
+
+    validate(prompt())
+  </script>
+</body>
+</html>
