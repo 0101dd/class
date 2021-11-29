@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 製作一個購物清單
+
+兩個字以上才能新增
+新增欄位邊框小於兩個字時是紅色，成功是藍色，空白是黑色
+已完成打勾
+可以保存資料到 localStorage
+個別刪除、全部刪除
+全部標記已完成、全部未完成 -->
+
+<body>
+
+  <div id="app">
+    <input type="text" v-model="newitem" @keydown.enter="add" :style="{ border: '5px solid ' + borderColor }">
+    <input type="button" value="新增" @click="add">
+    <br>
+    <input type="button" value="全部刪除" @click="delAll">
+    <input type="button" value="全部完成" @click="okAll(true)">
+    <input type="button" value="全部未完成" @click="okAll(false)">
+    <hr>
+    <ul>
+      <li v-for="(item, i) in items">
+        <input type="checkbox" v-model="item.ok">
+        <del v-if="item.ok">{{ item.name }}</del>
+        <span v-else>{{ item.name }}</span>
+        <input type="button" value="X" @click="del(i)">
+
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          newitem: '',
+          items: []
+        }
+      },
+      methods: {
+        add() {
+          if (this.newitem.length >= 2) {
+            this.items.push({ name: this.newitem, ok: false })
+            this.newitem = ''
+          }
+        },
+        del(i) {
+          this.items.splice(i, 1)
+        },
+        delAll() {
+          this.items = []
+        },
+        okAll(value) {
+          this.items = this.items.map(item => {
+            item.ok = value
+            return item
+          })
+        }
+      },
+      computed: {
+        borderColor() {
+          return this.newitem.length === 0 ? 'black' : this.newitem.length < 2 ? 'red' : 'blue'
+        }
+      },
+      watch: {
+        items: {
+          deep: true,
+          handler(value) {
+            localStorage.setItem('list', JSON.stringify(value))
+          }
+        }
+      },
+      mounted() {
+        this.items = JSON.parse(localStorage.getItem('list')) || []
+      }
+    })
+  </script>
+</body>
+
+</html>
