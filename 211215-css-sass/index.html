@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section id="section01">
+    <div class="container">
+      <h1>0.1 Sass 介紹</h1>
+      <p>Sass 是 CSS 預前處理器，目的在減少 CSS 的重複工作，以及更有效率維護樣式的解構，它需進行編譯（complier）成原生的 CSS，瀏覽器看不懂 Sass。</p>
+      <p>Sass 可以使用變數、函式、流程控制、嵌套、繼承、混入等功能，被稱爲 CSS 的程式語言（SassScript）。</p>
+    </div>
+  </section>
+
+  <section id="section02">
+    <div class="container">
+      <h1>0.2 Sass 的資料形態</h1>
+      <ul>
+        <li>1. number: 數字分爲 有單位 和 沒有單位，1, 2, 133, 10px, 22px</li>
+        <li>2. string: 有引號字串 '1231312'/ 無引號字串 apple</li>
+        <li>3. color:blue, #04a3f9, rgba(0, 0, 0, .5), linear-gradient()。</li>
+        <li>4. boolean(布林值): true, false</li>
+        <li>5. null(空值):null</li>
+        <li>6. list(像陣列): 用半形空格或逗號作爲區隔，例如1.5rem 1rem 0 2rem、10px, 40px</li>
+        <li>7. map(物件): 類似 JavaScript 的物件</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="section03">
+    <div class="container">
+      <h1>0.3 變數</h1>
+      <p>。宣告使用 $ ，變數名稱的位置是它的作用域，就像 JS 的 let 宣告，在大括號內的區域變數，寫在最外面屬於全域變數。</p>
+      <p>。變數的底線 _ 和連接線 - 可以互換使用，$bg-dark、$bg_dark 兩者是一樣的變數。</p>
+      <p>。!default 爲預設，若該變數前後已經被賦值，會引用套用的值，!default 就不會被套用。</p>
+      <p>。使用變數可以維持網站一致性，節省修改成本。</p>
+    </div>
+  </section>
+
+  <section id="section04">
+    <div class="container">
+      <h1>0.4 流程控制</h1>
+      <h3>@if、@else if、else</h3>
+      <div class="my-box">oura</div>
+
+      <h3>@for 迴圈有兩種 through 與 to</h3>
+      <h4>@for ... through，包含 end</h4>
+      <div class="through-1"></div>
+      <div class="through-2"></div>
+      <div class="through-3"></div>
+      <h4>@for ... to，不包含 end</h4>
+      <div class="to-1"></div>
+      <div class="to-2"></div>
+    </div>
+  </section>
+
+  <section id="section05">
+    <div class="container">
+      <h1>05. 嵌套巢狀</h1>
+      <p>。& 符號可以表示父層選擇器</p>
+      <p>。勿過度使用嵌套，考慮用最少的選擇器，選擇到想要的位置，維持在 3 ~ 4 層。</p>
+      <p>。過度使用嵌套，編譯後選擇器會有過長的問題，樣式碼不宜閱讀，渲染效率會較差，造成 CSS 檔案容量較大。</p>
+      <ul class="menu">
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+        <li><a href="#">LINK</a></li>
+      </ul>
+    </div>
+
+    <div id="bem">
+      <div class="container">
+        <h2>BEM 命名</h2>
+        <aside class="sideber">
+          <a class="sidebar__item sidebar__item--active" href="#">MENU</a>
+          <a class="sidebar__item" href="#">MENU</a>
+          <a class="sidebar__item" href="#">MENU</a>
+          <a class="sidebar__item" href="#">MENU</a>
+          <a class="sidebar__item" href="#">MENU</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercise">
+    <div class="container">
+      <h2>練習：使用巢狀建立三欄結構</h2>
+      <div class="row">
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=1">
+          <h2><a href="#">Title Link</a></h2>
+          <p>十年狀況暴力網頁課程平衡共同經歷平靜分類，高考告訴你思想都在感到第三，設置相對究竟很少，部分加工主。</p>
+        </div>
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=12">
+          <h2><a href="#">Title Link</a></h2>
+          <p>十年狀況暴力網頁課程平衡共同經歷平靜分類，高考告訴你思想都在感到第三，設置相對究竟很少，部分加工主。</p>
+        </div>
+        <div class="col">
+          <img src="https://picsum.photos/400/300/?random=13">
+          <h2><a href="#">Title Link</a></h2>
+          <p>十年狀況暴力網頁課程平衡共同經歷平靜分類，高考告訴你思想都在感到第三，設置相對究竟很少，部分加工主。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section06">
+    <div class="container">
+      <h1>06. Extend(繼承) %</h1>
+      <p>。繼承可以使用 css 選擇器 或 % 佔位選擇器來命名。</p>
+      <p>。使用 CSS 選擇器當作繼承，會被編譯到 CSS，% 佔位選擇器屬於 SCSS 的範疇，不會被編譯到 CSS。</p>
+      <p>。有共同樣式可以使用繼承，會被聚集成群組選擇器，樣式碼較少。</p>
+      <p>。@extend 沒有參數可以使用，mixins 有參數可以使用。</p>
+      <div id="extend">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section07">
+    <div class="container">
+      <h1>07. 計算</h1>
+      <p>。可以做加、減、乘、除、取餘數的計算。</p>
+      <p>。Sass 的計算與 calc() 不同，Sass 預處理前已經計算好，不會造成瀏覽器的負擔。</p>
+      <div class="box4">
+      </div>
+    </div>
+  </section>
+
+  <section id="section08">
+    <div class="container">
+      <h1>08. function</h1>
+      <p>@function 與 @mixin 很像，差異在於 @function 必須使用 @return 來回傳結果，無法在呼叫的地方產生一段樣式碼，@mixin 則可以使用 @include 呼叫產生一段 css 樣式</p>
+      <div class="funcbox">
+        hello
+      </div>
+      <p>
+        你要足球交換夏天評分節目自從，法院購物實現算是大型愛情，作用工業自己的天天味道展示一面虛擬那樣爸爸，老大數字字體東西只好不是很你想，抽菸區人數，也就是少女門口，位置團體郵遞區號投訴檢查，公斤準確工程師，億元女孩不喜歡，通過文件足夠網咖路線努力小子選擇，默。
+      </p>
+
+      <h2>計算欄位寬度</h2>
+      <div class="row">
+        <div class="col">
+          <p>
+            未來類似緊緊較大留學法律獨立動漫郵箱再說在這鏡頭看過美好眼神，典型身後圖像化，製品外觀軍隊鈴聲下載重新一身地理，英國好多技術歌曲預防其實都要從事公司，利益拒絶網際網路，近期承認谷歌唱片伺服器元素，合理臨時回事先生動畫遠程暫無，許可管理，開發商實力婚姻成果。
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            未來類似緊緊較大留學法律獨立動漫郵箱再說在這鏡頭看過美好眼神，典型身後圖像化，製品外觀軍隊鈴聲下載重新一身地理，英國好多技術歌曲預防其實都要從事公司，利益拒絶網際網路，近期承認谷歌唱片伺服器元素，合理臨時回事先生動畫遠程暫無，許可管理，開發商實力婚姻成果。
+          </p>
+        </div>
+        <div class="col">
+          <p>
+            未來類似緊緊較大留學法律獨立動漫郵箱再說在這鏡頭看過美好眼神，典型身後圖像化，製品外觀軍隊鈴聲下載重新一身地理，英國好多技術歌曲預防其實都要從事公司，利益拒絶網際網路，近期承認谷歌唱片伺服器元素，合理臨時回事先生動畫遠程暫無，許可管理，開發商實力婚姻成果。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section09">
+    <div class="container">
+      <h1>09. Mixins(混入)</h1>
+      <h2>flexbox</h2>
+      <div class="boxflex">hello</div>
+      <h2>使用 mixin 建立按鈕</h2>
+      <a class="btn btn-dark" href="#">按鈕</a>
+      <a class="btn btn-primary" href="#">按鈕</a>
+      <a class="btn btn-success" href="#">按鈕</a>
+      <a class="btn btn-danger" href="#">按鈕</a>
+
+      <h2>mixins 多參數 + for: 建立不同顏色的盒子</h2>
+      <p>多參數(...)時，參數會以 list 資料形態帶入</p>
+      <div class="b1"></div>
+      <div class="b2"></div>
+      <div class="b3"></div>
+      <div class="b4"></div>
+      <div class="b5"></div>
+    </div>
+  </section>
+
+  <section id="section10">
+    <div class="container">
+      <h1>10. 使用 mixin + @content 來設計 RWD</h1>
+      <div class="row">
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+        <div class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint corporis sed odio impedit
+          reprehenderit possimus voluptatem eligendi eaque nisi deleniti suscipit architecto pariatur, rem perferendis
+          ex perspiciatis porro inventore iusto.</div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
