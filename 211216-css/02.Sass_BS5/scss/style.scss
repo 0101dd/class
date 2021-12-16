@@ -1,0 +1,166 @@
+@import 'functions';
+@import 'variables';
+@import 'mixins';
+@import './vendor/_rfs.scss';
+
+* {
+  transition: 1s;
+}
+
+body {
+  padding-bottom: 50px;
+}
+
+.container {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  border-bottom: 2px solid #333;
+}
+
+h3 {
+  margin: 20px 0;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.box1 {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  line-height: 100px
+}
+
+/* 自定義 - 色彩 */
+.custom-color-1 {
+  // 直接使用變數
+  color: $gray-300;
+  // 使用 map-get() 從物件取出想要的值
+  color: map-get($colors, 'pink');
+}
+
+/* 混合顏色 */
+// mix 爲內建函式，可以將某顏色混白色或黑色
+.mix-light-color {
+  background-color: mix(white, red, 40%);
+}
+
+.mix-dark-color {
+  background-color: mix(black, rgb(25, 0, 255), 40%);
+}
+
+// BS5 自訂函式，包裝了 mix ()
+.tint-color {
+  background: $primary;
+  background: tint-color($primary, 50%);
+}
+
+.shade-color {
+  background: $primary;
+  background: shade-color($primary, 50%);
+}
+
+// 
+.lighten-color {
+  background: lighten(blue, 10%);
+}
+
+.darken-color {
+  background: darken(yellow, 10%);
+}
+
+/* 排版 */
+// rwd min-width 寫法
+
+#section01 {
+  .myClass-1 {
+    width: 100px;
+    height: 100px;
+    background: black;
+  }
+  @include media-breakpoint-up(sm) {
+    .myClass-1 {
+      background: olivedrab;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    .myClass-1 {
+      background: rgb(185, 127, 19);
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .myClass-1 {
+      background: rgb(135, 87, 212);
+    }
+  }
+}
+
+#section01 {
+  .myClass-2 {
+    width: 100px;
+    height: 100px;
+    background: black;
+  }
+  @include media-breakpoint-down(md) {
+    .myClass-2 {
+      background: palegreen;
+    }
+  }
+}
+
+#section01 {
+  .myClass-3 {
+    width: 100px;
+    height: 100px;
+    background: black;
+  }
+  @include media-breakpoint-between(md, lg) {
+    .myClass-3 {
+      background: rgb(236, 152, 251);
+    }
+  }
+}
+
+@mixin make-container($width:100%, $gutter: $container-padding-x) {
+  --#{$variable-prefix}gutter-x: #{$gutter};
+  --#{$variable-prefix}gutter-y: 0;
+  width: $width;
+  padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.my-container {
+  @include make-container();
+}
+
+// rfs
+// 第一種方式 @include rfs()，第二參數預設爲 font-size，可加可不加，!important 可加可不加
+.rwd-font-1 {
+  @include rfs(1.5rem !important);
+}
+
+// 第二種方式 @include font-size()，!important 可加可不加
+.rwd-font-2 {
+  @include font-size(1.5rem !important);
+}
+
+// rwd padding
+.rwd-padding-1 {
+  @include rfs(3rem !important, padding);
+}
+
+.rwd-padding-2 {
+  @include padding(3rem !important);
+}
+
+.rwd-padding-3 {
+  padding: rfs-fluid-value(1.5rem !important);
+}

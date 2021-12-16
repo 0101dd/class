@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1>自定義</h1>
+    <h2>色彩</h2>
+    <p>修改 $theme-color 物件，可自訂或修改主題顏色。主題色即是 .btn-primary, .text-primary... 這系列的 class。</p>
+    <h3 class="text-primary">自訂主題色 - coffee</h3>
+    <button class="btn btn-coffee-light">BUTTON</button>
+    <button class="btn btn-coffee-medium">BUTTON</button>
+
+    <h3>mix(), lighten(), darken()</h3>
+    <div class="box1 mix-light-color">mix-light-color</div>
+    <div class="box1 mix-dark-color">mix-dark-color</div>
+    <div class="box1 tint-color">tint-color</div>
+    <div class="box1 shade-color">shade-color</div>
+    <div class="box1 darken-color">darken-color</div>
+  </div>
+
+  <div id="section01">
+    <div class="container">
+      <h1>斷點</h1>
+      <h4>rwd min-width 寫法</h4>
+      <div class="myClass-1"></div>
+
+      <h4>rwd max-width 寫法</h4>
+      <div class="myClass-2"></div>
+
+      <h4>rwd 介於兩個斷點之間 寫法</h4>
+      <div class="myClass-3"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>元件</h1>
+    <p>可爲專案自訂元件的樣式，例如卡片。</p>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/400/300/?random=1" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/400/300/?random=13" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/400/300/?random=12" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-coffee-medium">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/400/300/?random=11" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="btn btn-danger">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>自訂通用類別 class</h2>
+    <div class="w-sm-50 bg-coffee-light"></div>
+  </div>
+
+</body>
+
+</html>

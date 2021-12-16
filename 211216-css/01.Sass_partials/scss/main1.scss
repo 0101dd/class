@@ -1,0 +1,11 @@
+// 函式
+@import 'functions';
+// 變數
+@import 'variables';
+.color{
+  color:$secondary;
+}
+
+.color2 {
+  background-color: $primary;
+}
