@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.css'>
+  <title>Document</title>
+  <style>
+    body {
+      padding-bottom: 500px;
+    }
+
+    h1 {
+      margin: 20px 0;
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .box4,
+    .box5,
+    .box6,
+    .box7,
+    .box8,
+    .box9,
+    .box10,
+    .box11 {
+      width: 50px;
+      height: 50px;
+      background: black;
+      margin: 5px;
+    }
+
+    .box2 {
+      background: red;
+    }
+
+    .box3 {
+      background: green;
+    }
+
+    .box4 {
+      background: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>GSAP - 現代網路動畫標準規範</h1>
+    <h2>gsap 物件</h2>
+    <ul>
+      <li>使用 gsap.to(), gsap.from(), fsap.fromTo() 三種建立 Tween 補間動畫的方法。</li>
+      <li>使用 gsap.timeline() 建立時間軸，它是補間動畫或其他時間軸的容器。</li>
+    </ul>
+
+    <hr>
+
+    <h2>Tween - 補間動畫</h2>
+
+    <h3>1. 選擇目標</h3>
+    <div class="box1"></div>
+
+    <hr>
+
+
+    <h3>2. 選擇幾個群組時使用陣列</h3>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box3"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box4"></div>
+    <div class="box4"></div>
+
+    <hr>
+
+    <h3>3. 絕對數值</h3>
+    <div class="box5"></div>
+
+    <hr>
+
+    <h3>4. 相對數值</h3>
+    <div class="box6"></div>
+
+    <hr>
+
+    <h3>5. 隨機函式值(字串)</h3>
+    <div class="box7"></div>
+    <div class="box7"></div>
+    <div class="box7"></div>
+
+    <hr>
+
+    <h3>6. 函式作爲值</h3>
+    <div class="box8"></div>
+    <div class="box8"></div>
+    <div class="box8"></div>
+
+    <hr>
+
+    <h3>7. 設定 CSS 屬性</h3>
+    <p id="word">
+      促銷發送語音不限些什麼是從說道，藍色臨床領導主席大家添加配套分為你也台中，淡淡表現，重新表現警方反而，線路家園加速傳說元素維持內置公斤，我又他還達到接到開了商家，灌水英語自動課程刪除瘋狂男子，版主最好的達到人才歲月特色是從複雜女朋友多少，豐富結果已經，查。
+    </p>
+    <div class="box9" style="margin:auto"></div>
+    <div class="box9" style="margin:auto"></div>
+    <div class="box9" style="margin:auto"></div>
+
+    <hr>
+
+    <h3>8. 設定動畫屬性</h3>
+    <div class="box10"></div>
+    <button id="play">play</button>
+    <button id="pause">pause</button>
+
+    <hr>
+
+    <h3>9. keyframes 關鍵影格</h3>
+    <p>讓單一補間動畫具有更多連續動作</p>
+    <div class="box11"></div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script src="./js/gsap.js"></script>
+
+  <script>
+    // 1. 選擇目標==============================================********************************
+    // gsap.to() 建立一個補間動畫，從目前狀態 到 設定狀態
+    // 參數一支援符合 css 選擇器字串(建議)、querySelector、jQuery 來選擇
+    // 參數二爲物件，設定物件的屬性
+    const tween1 = gsap.to('.box1', {
+      x: 1000,
+      rotation: 1350,
+      duration: 5
+    })
+
+    // 2. 選擇幾個群組時使用陣列**************************************************************
+    const tween2 = gsap.to(['.box2', '.box3', '.box4'], {
+      x: 500,
+      duration: 3
+    })
+
+    // 3. 絕對數值*************************************************************************
+    const tween3 = gsap.to('.box5', {
+      // 絕對數值 - 無單位數字
+      // x: 500,
+      // 絕對數值 - 加單位的字串
+      // x: '500px',
+      // 相當於 x: '100%'，官方建議用 XPercent、YPercent
+      xPercent: 100,
+    })
+
+    // 4. 相對數值*************************************************************************
+    let myVar = '300'
+    const tween4 = gsap.to('.box6', {
+      // x: '+=200',
+      x: `+=${myVar}`,
+      // 重複次數，加上初始播放是 4 次
+      repeat: 3,
+      // 重複時記錄目前狀態，通常是配合相對數值
+      repeatRefresh: true,
+      duration: 3
+    })
+
+    // 5. 隨機函式值(字串)*************************************************************************
+    // 隨機函式是字串
+    const tween5 = gsap.to('.box7', {
+      // 0 ~ 1000 隨機數字
+      x: 'random(0, 1000)',
+      // 500 ~ 1000 可以被 100 整除的數字
+      x: 'random(500, 1000, 100)',
+      // 從陣列選擇一個值
+      background: 'random([red, green, blue])',
+      duration: 3
+    })
+
+    // 6. 函式作爲值*****************************************************************************
+    const tween6 = gsap.to('.box8', {
+      // 函式作爲值提供三個參數，索引、目前元素、置放這些元素的陣列
+      x: function (index, target, targets) {
+        console.log(index, target, targets)
+        return 100 * (index + 1)
+      },
+      duration: 3
+    })
+
+    // 7. 設定 CSS 屬性*******************************************************************
+    const tween7 = gsap.to('.box9', {
+      // 幾乎所有的 CSS 屬性都可以設定
+      x: '+=random(-100, 100)',
+      y: '+=random(-100, 100)',
+      rotation: 720,
+      scale: '+=random(0, 1)',
+      duration: 1,
+      repeat: 6,
+      repeatRefresh: true,
+      width: 100,
+      height: 110,
+      // 屬性有 「-」，要使用駝峯式寫法
+      backgroundColor: 'rgb(random(0, 255),rgb(random(0, 255),rgb(random(0, 255))',
+      opacity: 'random(0.1, 1)'
+    })
+
+    const word = gsap.to('#word', {
+      color: 'random([red, green, blue])',
+      fontWeight: 'bold',
+      fontSize: '1.5rem',
+      letterSpacing: '1rem',
+      repeat: 5,
+      repeatRefresh: true,
+      duration: 5
+    })
+
+    // 8. 設定動畫屬性**************************************************************************
+    const tween8 = gsap.to('.box10', {
+      x: 1000,
+      duration: 10,
+      // delay: 2,
+      // 重複次數，不包括初始播放，-1爲無限次
+      repeat: -1,
+      // 重複乾的延遲時間
+      // repeatDelay: 5,
+      repeatRefresh: true,
+      // 重複播放時往返
+      yoyo: true,
+      ease: 'steps(10)'
+    })
+
+    const play = document.querySelector('#play')
+    const pause = document.querySelector('#pause')
+    play.addEventListener('click', () => {
+      tween8.play()
+    })
+    pause.addEventListener('click', () => {
+      tween8.pause()
+    })
+
+    // 9. keyframes 關鍵影格******************************************************************
+    gsap.to('.box11', {
+      // 每個 keyframes 的預設設定
+      defaults: {
+        delay: 1,
+        ease: 'elastic',
+        duration: 2
+      },
+      keyframes: [
+        {
+          x: 200,
+          rotation: 360,
+        },
+        {
+          y: 200,
+          scale: 0.1,
+        },
+        {
+          x: 0,
+          rotation: -360,
+          scale: 1.5,
+        },
+        {
+          y: 0,
+          scale: 1,
+        }
+      ],
+      // 當全部動畫執行完後重複，設定在 defaults 會造成每個 keyframes 循環
+      repeat: -1
+    })
+  </script>
+</body>
+
+</html>

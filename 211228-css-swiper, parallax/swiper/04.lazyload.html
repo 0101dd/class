@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- * swiper css -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!-- * bootstrap css -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.css'>
+  <title>Document</title>
+  <style>
+    :root {
+      /* swiper 主題顏色 */
+      --swiper-theme-color: white;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-weight: bold;
+      background-color: rgb(255, 220, 105);
+      padding: 5px;
+    }
+
+    #dd.swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background-color: black;
+    }
+
+    .swiper-slide img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      -ms-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>loading設定</h1>
+    <div id="dd-1" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+          <img data-src="https://picsum.photos/1920/400/?random=1" class="swiper-lazy" />
+          <!-- Preloader image -->
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+          <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+          <img data-src="https://picsum.photos/1920/400/?random=12" class="swiper-lazy" />
+          <!-- Preloader image -->
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+          <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+          <img data-src="https://picsum.photos/1920/400/?random=13.jpg" class="swiper-lazy" />
+          <!-- Preloader image -->
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+          <!-- Required swiper-lazy class and image source specified in data-src attribute -->
+          <img data-src="https://picsum.photos/1920/400/?random=14" class="swiper-lazy" />
+          <!-- Preloader image -->
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        </div>
+
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- * swiper js -->
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <!-- * bootstrap bundle js -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js'></script>
+  <script>
+    var dd = new Swiper("#dd-1", {
+      lazy: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+</body>
+
+</html>
